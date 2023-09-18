@@ -1,8 +1,10 @@
-<?php require '../conn.php';
+<?php
+require '../include/conn.php';
+/** @var object $conn */
 
 $namawarden = $_POST['namawarden'];
 $nokpwarden = $_POST['nokpwarden'];
-$kata = $_POST['kata'];
+$kata = password_hash($nokpwarden,PASSWORD_BCRYPT);
 
 $sql = "INSERT INTO warden VALUES(null, '$namawarden', '$nokpwarden','$kata')";
 $conn->query($sql);

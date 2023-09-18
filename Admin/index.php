@@ -1,6 +1,6 @@
 <?php
-require  '../conn.php';
-if(!isset($_SESSION['idpengguna'])) header('location:../');
+require '../include/conn.php';
+if(!isset($_SESSION['idadmin'])) header('location:../');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,13 +15,11 @@ if(!isset($_SESSION['idpengguna'])) header('location:../');
     <tr>
         <td>Sistem Pendaftaran Peralatan Elektrik</td>
         <td>
-            <a href="index.php?menu=home">Home</a>
-            ::
             <a href="index.php?menu=warden">Warden</a>
             ::
-            <a href="index.php?menu=../peralatan.php">Peralatan</a>
+            <a href="index.php?menu=peralatan">Peralatan</a>
             ::
-            <a href="index.php?menu=../pelajar.php">Pelajar</a>
+            <a href="index.php?menu=kata">Kata Laluan</a>
             ::
             <a href="../logout.php">Logout</a>
         </td>
@@ -29,7 +27,7 @@ if(!isset($_SESSION['idpengguna'])) header('location:../');
 </table>
 
 <?php
-$menu = 'home';
+$menu = 'warden';
 if (isset($_GET['menu']))
 {
     $menu = $_GET['menu'];
