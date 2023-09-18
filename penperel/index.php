@@ -13,7 +13,7 @@
     <label for="idadmin">ID admin</label>
     <input type="text" name="idadmin" id="idadmin" required>
     <label for="kata">Kata Laluan</label>
-    <input type="password" name="katalaluan" id="katalaluan" required>
+    <input type="password" name="kata" id="kata" required>
     <button type="submit">enter</button>
 </form>
 
