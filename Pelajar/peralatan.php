@@ -90,26 +90,27 @@ if (!isset($_GET['edit'])) {
         <th>Bil</th>
         <th>Pelajar</th>
         <th>Jenis Peralatan</th>
-        <th>No. IC</th>
-        <th>Nombor Telefon</th>
+        <th>Jenama</th>
+        <th>No.Siri</th>
         <th>Tindakan</th>
     </tr>
     <?php
     $bil = 1;
-    $sql = "SELECT * FROM customer ORDER BY cust_name";
+    $sql = "SELECT * FROM peralatan ORDER BY pelajar";
     $result = $conn->query($sql);
     echo $conn->error;
     while ($row = $result->fetch_object()) {
         ?>
         <tr>
             <td><?php echo $bil++; ?></td>
-            <td><?php echo $row->cust_name; ?></td>
-            <td><?php echo $row->nric; ?></td>
-            <td><?php echo $row->no_telefon; ?></td>
+            <td><?php echo $row->pelajar; ?></td>
+            <td><?php echo $row->jenisperalatan; ?></td>
+            <td><?php echo $row->jenama; ?></td>
+            <td><?php echo $row->nosiri; ?></td>
             <td>
-                <a href="index.php?menu=indexx&edit=<?php echo $row->idcustomer; ?>">Edit</a>
+                <a href="index.php?menu=peralatan&edit=<?php echo $row->idperalatan; ?>">Edit</a>
                 |
-                <a href="padam.php?idcustomer=<?php echo $row->idcustomer; ?>"
+                <a href="padam.php?idperalatan=<?php echo $row->idperalatan; ?>"
                    onclick="return sahkan()">Padam</a>
             </td>
         </tr>
