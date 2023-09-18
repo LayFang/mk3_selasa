@@ -1,3 +1,8 @@
+<?php
+/**
+ *
+ */
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,11 +26,7 @@ if (!isset($_GET['edit'])) {
                 </tr>
                 <tr>
                     <td>No.KP Warden</td>
-                    <td><input type="text" name="nric" required minlength="12" maxlength="12"></td>
-                </tr>
-                <tr>
-                    <td>Katalaluan</td>
-                    <td><input type="text" name="kata" required minlength="12" maxlength="12"></td>
+                    <td><input type="text" name="nokpwarden" required minlength="12" maxlength="12"></td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -38,7 +39,7 @@ if (!isset($_GET['edit'])) {
     </form>
     <?php
 } else {
-    $idcustomer = $_GET['edit'];
+    $idwarden = $_GET['edit'];
     $sql = "SELECT * FROM warden WHERE idwarden = $idwarden";
     $result = $conn->query($sql);
     $row = $result->fetch_object();
@@ -59,11 +60,6 @@ if (!isset($_GET['edit'])) {
                                required value="<?php echo $row->nokpwarden; ?>" minlength="12"                                maxlength="12"></td>
                 </tr>
                 <tr>
-                    <td>Katalaluan</td>
-                    <td><input type="text" name="kata"
-                               required value="<?php echo $row->kata; ?>" minlength="5"                                maxlength="5"></td>
-                </tr>
-                <tr>
                     <td colspan="2">
                         <button type="submit">SIMPAN</button>
                         <button type="reset">BATAL</button>
@@ -81,12 +77,11 @@ if (!isset($_GET['edit'])) {
         <th>Bil</th>
         <th>Nama Warden</th>
         <th>No.KP Warden</th>
-        <th>Katalaluan</th>
         <th>Tindakan</th>
     </tr>
     <?php
     $bil = 1;
-    $sql = "SELECT * FROM warden ORDER BY namawarden;
+    $sql = "SELECT * FROM warden ORDER BY namawarden";
     $result = $conn->query($sql);
     echo $conn->error;
     while ($row = $result->fetch_object()) {
@@ -95,12 +90,14 @@ if (!isset($_GET['edit'])) {
             <td><?php echo $bil++; ?></td>
             <td><?php echo $row->namawarden; ?></td>
             <td><?php echo $row->nokpwarden; ?></td>
-            <td><?php echo $row->kata; ?></td>
             <td>
                 <a href="index.php?menu=warden&edit=<?php echo $row->idwarden; ?>">Edit</a>
                 |
                 <a href="padam.php?idwarden=<?php echo $row->idwarden; ?>"
                    onclick="return sahkan()">Padam</a>
+                |
+                <a href="reset.php?idwarden=<?php echo $row->idwarden; ?>"
+                   onclick="return sahkan()">Reset</a>
             </td>
         </tr>
         <?php
